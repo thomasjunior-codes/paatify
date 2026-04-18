@@ -312,9 +312,6 @@ function App() {
               <p>{currentSong.artist || 'Unknown artist'}</p>
             </div>
             <div className="action-buttons">
-              <button className={shuffle ? 'active' : ''} onClick={() => setShuffle((prev) => !prev)}>
-                🔀
-              </button>
             </div>
           </div>
           <div className="album-art">
@@ -326,6 +323,9 @@ function App() {
             )}
           </div>
           <div className="controls">
+            <button className={shuffle ? 'active' : ''} onClick={() => setShuffle((prev) => !prev)}>
+              🔀
+            </button>
             <button onClick={prevSong}>⏮</button>
             <button className="play-btn" onClick={togglePlay}>
               {isPlaying ? '⏸' : '▶'}
