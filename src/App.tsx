@@ -269,7 +269,7 @@ function App() {
         {search ? (
           <div className="search-results">
             <ul>
-              {filteredSongs.map((song, index) => (
+              {filteredSongs.map((song) => (
                 <li key={`${song.src}-search`}>
                   <div>
                     <strong>{song.title}</strong>
