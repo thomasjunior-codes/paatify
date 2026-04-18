@@ -306,16 +306,12 @@ function App() {
       </div>
       <div className="main">
         <div className="player">
-          <div className="player-header">
-            <div className="track-labels">
-              <h2>{currentSong.title}</h2>
-              <p>{currentSong.artist || 'Unknown artist'}</p>
-            </div>
-            <div className="action-buttons">
-            </div>
-          </div>
           <div className="album-art">
             <canvas ref={canvasRef} width="240" height="240" />
+          </div>
+          <div className="track-labels">
+            <h2>{currentSong.title}</h2>
+            <p>{currentSong.artist || 'Unknown artist'}</p>
           </div>
           <div className="queue-status">
             {queueNextIndex !== null && (
