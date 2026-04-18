@@ -36,11 +36,17 @@ function App() {
   const currentSong = songs[currentSongIndex]
 
   useEffect(() => {
-    fetch('/songs.json')
+    const baseUrl = import.meta.env.BASE_URL
+    fetch(`${baseUrl}songs.json`)
       .then((res) => res.json())
       .then((data: Song[]) => {
         if (Array.isArray(data) && data.length) {
-          setSongs(data)
+          // Prepend baseUrl to each song's src path
+          const songsWithBasePath = data.map(song => ({
+            ...song,
+            src: `${baseUrl}${song.src}`
+          }))
+          setSongs(songsWithBasePath)
           setCurrentSongIndex(0)
         }
       })
