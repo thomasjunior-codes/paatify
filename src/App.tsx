@@ -70,7 +70,7 @@ function App() {
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata)
       audio.removeEventListener('ended', handleEnded)
     }
-  }, [songs])
+  }, [songs, currentSongIndex, shuffle, queueNextIndex, isPlaying])
 
   useEffect(() => {
     const audio = audioRef.current
