@@ -42,32 +42,43 @@
   {
     "title": "Andhiyiley-Vaanam",
     "artist": "K.J. Yesudas, S. Janaki",
-    "src": "Andhiyiley-Vaanam-MassTamilan.com.mp3"
+    "src": "Andhiyiley-Vaanam-MassTamilan.com.mp3",
+    "cover": "covers/48016a259e.jpg",
+    "coverHue": 37
   },
   {
     "title": "Antha-Nilava-Than",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Antha-Nilava-Than.mp3"
+    "src": "Antha-Nilava-Than.mp3",
+    "cover": "covers/ccf9e4c63f.jpg",
+    "coverHue": 15
   },
   {
     "title": "Chinna Chinna Vanna Kuyil",
     "artist": "S. Janaki",
-    "src": "Chinna Chinna Vanna Kuyil.mp3"
+    "src": "Chinna Chinna Vanna Kuyil.mp3",
+    "cover": "covers/4696889ba3.jpg",
+    "coverHue": 54
   },
   {
     "title": "Chinnamani Kuyile",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Chinnamani Kuyile.mp3"
+    "src": "Chinnamani Kuyile.mp3",
+    "cover": "covers/6f58e13d3c.jpg",
+    "coverHue": 193
   },
   {
     "title": "En Ganam",
     "artist": "K.J. Yesudas",
-    "src": "En Ganam.mp3"
+    "src": "En Ganam.mp3",
+    "cover": "covers/c2fde08ec4.jpg"
   },
   {
     "title": "En-Vaanilay",
     "artist": "S.P. Balasubrahmanyam, K.S. Chitra",
-    "src": "En-Vaanilay-MassTamilan.com.mp3"
+    "src": "En-Vaanilay-MassTamilan.com.mp3",
+    "cover": "covers/4926459de3.jpg",
+    "coverHue": 193
   },
   {
     "title": "Endha pennilum illadha",
@@ -82,12 +93,16 @@
   {
     "title": "Enge-En-Jeevane",
     "artist": "K.J. Yesudas, P. Susheela",
-    "src": "Enge-En-Jeevane-MassTamilan.com.mp3"
+    "src": "Enge-En-Jeevane-MassTamilan.com.mp3",
+    "cover": "covers/8609633a5c.jpg",
+    "coverHue": 54
   },
   {
     "title": "Engirundho Azhaikkum",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Engirundho Azhaikkum.mp3"
+    "src": "Engirundho Azhaikkum.mp3",
+    "cover": "covers/081ab34cd7.jpg",
+    "coverHue": 75
   },
   {
     "title": "Enna-Satham-Intha",
@@ -127,17 +142,23 @@
   {
     "title": "Ithu-Oru-Pon-Malai",
     "artist": "K.J. Yesudas",
-    "src": "Ithu-Oru-Pon-Malai-MassTamilan.com.mp3"
+    "src": "Ithu-Oru-Pon-Malai-MassTamilan.com.mp3",
+    "cover": "covers/c59d74a47f.jpg",
+    "coverHue": 48
   },
   {
     "title": "Kaathalin Deepam Ondru (Male)",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Kaathalin Deepam Ondru (Male).mp3"
+    "src": "Kaathalin Deepam Ondru (Male).mp3",
+    "cover": "covers/1a210fe0c9.jpg",
+    "coverHue": 14
   },
   {
     "title": "Kaattukuyilu",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Kaattukuyilu.mp3"
+    "src": "Kaattukuyilu.mp3",
+    "cover": "covers/3337a74faa.jpg",
+    "coverHue": 15
   },
   {
     "title": "Kadavul-Ullame",
@@ -162,12 +183,16 @@
   {
     "title": "Kanmani-Anbodu",
     "artist": "Kamal Haasan, S. Janaki",
-    "src": "Kanmani-Anbodu.mp3"
+    "src": "Kanmani-Anbodu.mp3",
+    "cover": "covers/cd3a827ae5.jpg",
+    "coverHue": 60
   },
   {
     "title": "Kannale Kadhal Kavithai",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Kannale Kadhal Kavithai.mp3"
+    "src": "Kannale Kadhal Kavithai.mp3",
+    "cover": "covers/2016bd9460.jpg",
+    "coverHue": 4
   },
   {
     "title": "Kannan-Vanthu",
@@ -177,7 +202,9 @@
   {
     "title": "Kanne Navamaniye",
     "artist": "K.J. Yesudas, P. Susheela",
-    "src": "Kanne Navamaniye.mp3"
+    "src": "Kanne Navamaniye.mp3",
+    "cover": "covers/f36a9c7b49.jpg",
+    "coverHue": 176
   },
   {
     "title": "Kanne-Kalaimane",
@@ -187,7 +214,9 @@
   {
     "title": "Kasturi Mane Mane",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Kasturi Mane Mane.mp3"
+    "src": "Kasturi Mane Mane.mp3",
+    "cover": "covers/ce660729f4.jpg",
+    "coverHue": 6
   },
   {
     "title": "Kathoram Lolaku",
@@ -217,22 +246,30 @@
   {
     "title": "Kuyile Kuyile",
     "artist": "S. Janaki",
-    "src": "Kuyile Kuyile.mp3"
+    "src": "Kuyile Kuyile.mp3",
+    "cover": "covers/f36a9c7b49.jpg",
+    "coverHue": 176
   },
   {
     "title": "Kuzhal-Oothum-Kannanukku",
     "artist": "K.J. Yesudas",
-    "src": "Kuzhal-Oothum-Kannanukku.mp3"
+    "src": "Kuzhal-Oothum-Kannanukku.mp3",
+    "cover": "covers/3e444cc3f6.jpg",
+    "coverHue": 42
   },
   {
     "title": "Madai Thiranthu",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Madai Thiranthu.mp3"
+    "src": "Madai Thiranthu.mp3",
+    "cover": "covers/f7f620815b.jpg",
+    "coverHue": 48
   },
   {
     "title": "Malaiyoram Veesum Kaatru (Male)",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Malaiyoram Veesum Kaatru (Male).mp3"
+    "src": "Malaiyoram Veesum Kaatru (Male).mp3",
+    "cover": "covers/6e1249c9ba.jpg",
+    "coverHue": 44
   },
   {
     "title": "Malligai Mottu Manasa Thottu",
@@ -262,7 +299,9 @@
   {
     "title": "Naan Thedum Sevanthi",
     "artist": "K.J. Yesudas",
-    "src": "Naan Thedum Sevanthi.mp3"
+    "src": "Naan Thedum Sevanthi.mp3",
+    "cover": "covers/7b32c88b72.jpg",
+    "coverHue": 57
   },
   {
     "title": "Nadhi-Odum-Karaiyoram",
@@ -277,7 +316,9 @@
   {
     "title": "Nee Engey En Anbe",
     "artist": "K.J. Yesudas, P. Susheela",
-    "src": "Nee Engey En Anbe.mp3"
+    "src": "Nee Engey En Anbe.mp3",
+    "cover": "covers/847bdfe4f3.jpg",
+    "coverHue": 15
   },
   {
     "title": "Nee Pathi Nan Pathi- ",
@@ -287,7 +328,9 @@
   {
     "title": "Nee Pottu Vacha",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Nee Pottu Vacha.mp3"
+    "src": "Nee Pottu Vacha.mp3",
+    "cover": "covers/cebf02bb87.jpg",
+    "coverHue": 14
   },
   {
     "title": "Nee-Oru-Kaadhal-Sangeetham",
@@ -302,7 +345,9 @@
   {
     "title": "Ninaivo Oru Paravai",
     "artist": "Kamal Haasan, S. Janaki",
-    "src": "Ninaivo Oru Paravai.mp3"
+    "src": "Ninaivo Oru Paravai.mp3",
+    "cover": "covers/cd84993fb9.jpg",
+    "coverHue": 355
   },
   {
     "title": "Ninnukori-Varanam",
@@ -312,27 +357,37 @@
   {
     "title": "Oorellam Saamiyaga",
     "artist": "K.J. Yesudas",
-    "src": "Oorellam Saamiyaga.mp3"
+    "src": "Oorellam Saamiyaga.mp3",
+    "cover": "covers/5cd0a612ef.jpg",
+    "coverHue": 43
   },
   {
     "title": "Oorusanam-Thoongiduchu",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Oorusanam-Thoongiduchu.mp3"
+    "src": "Oorusanam-Thoongiduchu.mp3",
+    "cover": "covers/3e444cc3f6.jpg",
+    "coverHue": 42
   },
   {
     "title": "Oru Santhana Kaattu",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Oru Santhana Kaattu.mp3"
+    "src": "Oru Santhana Kaattu.mp3",
+    "cover": "covers/2ccf9fb6d3.jpg",
+    "coverHue": 25
   },
   {
     "title": "Oru_Iniya_Manathu-VmusiQ.Com",
     "artist": "Malaysia Vasudevan",
-    "src": "Oru_Iniya_Manathu-VmusiQ.Com.mp3"
+    "src": "Oru_Iniya_Manathu-VmusiQ.Com.mp3",
+    "cover": "covers/de69f570b0.jpg",
+    "coverHue": 42
   },
   {
     "title": "Oru-Pen-Pura",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Oru-Pen-Pura.mp3"
+    "src": "Oru-Pen-Pura.mp3",
+    "cover": "covers/b98f6d9273.jpg",
+    "coverHue": 24
   },
   {
     "title": "Oru-Poonga-Vanam",
@@ -367,7 +422,8 @@
   {
     "title": "Pazhaya Soghamkal",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Pazhaya Soghamkal.mp3"
+    "src": "Pazhaya Soghamkal.mp3",
+    "cover": "covers/c2fde08ec4.jpg"
   },
   {
     "title": "Poo-Maalaye-Thol-Seravaa",
@@ -377,7 +433,9 @@
   {
     "title": "Poongatru-Thirumbuma",
     "artist": "Malaysia Vasudevan, S. Janaki",
-    "src": "Poongatru-Thirumbuma.mp3"
+    "src": "Poongatru-Thirumbuma.mp3",
+    "cover": "covers/ccf9e4c63f.jpg",
+    "coverHue": 15
   },
   {
     "title": "Poongaviyam",
@@ -387,7 +445,9 @@
   {
     "title": "Poongum Aagaya Gangai",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Poongum Aagaya Gangai.mp3"
+    "src": "Poongum Aagaya Gangai.mp3",
+    "cover": "covers/20e5d6338d.jpg",
+    "coverHue": 45
   },
   {
     "title": "Poonkatru",
@@ -417,7 +477,9 @@
   {
     "title": "Raasaathi-Unnai-Kaanatha-Nenjam",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Raasaathi-Unnai-Kaanatha-Nenjam.mp3"
+    "src": "Raasaathi-Unnai-Kaanatha-Nenjam.mp3",
+    "cover": "covers/4dedbe1cb7.jpg",
+    "coverHue": 24
   },
   {
     "title": "Raathiriyil Paadum Paattu ",
@@ -432,7 +494,9 @@
   {
     "title": "Rasave-Unna",
     "artist": "Malaysia Vasudevan, S. Janaki",
-    "src": "Rasave-Unna.mp3"
+    "src": "Rasave-Unna.mp3",
+    "cover": "covers/4dedbe1cb7.jpg",
+    "coverHue": 24
   },
   {
     "title": "Rasithan-Kairasithan",
@@ -442,7 +506,9 @@
   {
     "title": "Salaiyoram",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Salaiyoram.mp3"
+    "src": "Salaiyoram.mp3",
+    "cover": "covers/f6818004e4.jpg",
+    "coverHue": 34
   },
   {
     "title": "Sami-Kitte-Solli",
@@ -452,7 +518,9 @@
   {
     "title": "Sangathil Padatha",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Sangathil Padatha.mp3"
+    "src": "Sangathil Padatha.mp3",
+    "cover": "covers/8cc97c3f9b.jpg",
+    "coverHue": 55
   },
   {
     "title": "Sangeetha-Megham",
@@ -462,7 +530,9 @@
   {
     "title": "Senorita",
     "artist": "S.P. Balasubrahmanyam, K.S. Chitra",
-    "src": "Senorita-MassTamilan.com.mp3"
+    "src": "Senorita-MassTamilan.com.mp3",
+    "cover": "covers/4926459de3.jpg",
+    "coverHue": 193
   },
   {
     "title": "Senthaazham Poovil",
@@ -472,12 +542,16 @@
   {
     "title": "Senthoora-Poove",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Senthoora-Poove.mp3"
+    "src": "Senthoora-Poove.mp3",
+    "cover": "covers/baadc50fb9.jpg",
+    "coverHue": 176
   },
   {
     "title": "Sevanthi Pooveduthen",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Sevanthi Pooveduthen.mp3"
+    "src": "Sevanthi Pooveduthen.mp3",
+    "cover": "covers/72fb4aac84.jpg",
+    "coverHue": 47
   },
   {
     "title": "Shenbagame_ShenbagameM",
@@ -487,27 +561,37 @@
   {
     "title": "Sorgame-Endralum-Athu-",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Sorgame-Endralum-Athu-MassTamilan.io.mp3"
+    "src": "Sorgame-Endralum-Athu-MassTamilan.io.mp3",
+    "cover": "covers/c3d56cf1e6.jpg",
+    "coverHue": 194
   },
   {
     "title": "Thaalattudhe Vaanam",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Thaalattudhe Vaanam.mp3"
+    "src": "Thaalattudhe Vaanam.mp3",
+    "cover": "covers/3599be0371.jpg",
+    "coverHue": 25
   },
   {
     "title": "Thaazham Poove Vaasam",
     "artist": "K.J. Yesudas",
-    "src": "Thaazham Poove Vaasam.mp3"
+    "src": "Thaazham Poove Vaasam.mp3",
+    "cover": "covers/eefab7566b.jpg",
+    "coverHue": 16
   },
   {
     "title": "Thaen Mozhi",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Thaen Mozhi.mp3"
+    "src": "Thaen Mozhi.mp3",
+    "cover": "covers/a858ee115a.jpg",
+    "coverHue": 136
   },
   {
     "title": "Theme-StarMusiQ.Com",
     "artist": "Ilaiyaraaja",
-    "src": "Theme-StarMusiQ.Com.mp3"
+    "src": "Theme-StarMusiQ.Com.mp3",
+    "cover": "covers/85bbc77abb.jpg",
+    "coverHue": 4
   },
   {
     "title": "Thenmadurai-Vaigai-Nadhi",
@@ -517,7 +601,9 @@
   {
     "title": "Thenpandi_Thamizhe-StarMusiQ.Com",
     "artist": "Ilaiyaraaja, Kamal Haasan",
-    "src": "Thenpandi_Thamizhe-StarMusiQ.Com.mp3"
+    "src": "Thenpandi_Thamizhe-StarMusiQ.Com.mp3",
+    "cover": "covers/6ffa8f0ecf.jpg",
+    "coverHue": 14
   },
   {
     "title": "Thoongatha-Vizhigal",
@@ -552,7 +638,9 @@
   {
     "title": "Uyire Uyirin",
     "artist": "S. Janaki",
-    "src": "Uyire Uyirin.mp3"
+    "src": "Uyire Uyirin.mp3",
+    "cover": "covers/f36a9c7b49.jpg",
+    "coverHue": 176
   },
   {
     "title": "Va-Va-Va-Kanna-Va",
@@ -562,7 +650,9 @@
   {
     "title": "Vaa Vaa Vasanthamey",
     "artist": "K.J. Yesudas",
-    "src": "Vaa Vaa Vasanthamey.mp3"
+    "src": "Vaa Vaa Vasanthamey.mp3",
+    "cover": "covers/0013667432.jpg",
+    "coverHue": 232
   },
   {
     "title": "Vaa-Vaa-Anbe-Anbe",
@@ -577,7 +667,9 @@
   {
     "title": "Vaanengum Thanga",
     "artist": "K.J. Yesudas, S. Janaki",
-    "src": "Vaanengum Thanga.mp3"
+    "src": "Vaanengum Thanga.mp3",
+    "cover": "covers/a849bc5678.jpg",
+    "coverHue": 47
   },
   {
     "title": "Vaanuyarntha-Solaiyile",
@@ -602,12 +694,16 @@
   {
     "title": "Vandhale Allipoo",
     "artist": "S.P. Balasubrahmanyam, S. Janaki",
-    "src": "Vandhale Allipoo.mp3"
+    "src": "Vandhale Allipoo.mp3",
+    "cover": "covers/3b0cdeb840.jpg",
+    "coverHue": 234
   },
   {
     "title": "Vetti-Veru-Vaasam",
     "artist": "K.J. Yesudas",
-    "src": "Vetti-Veru-Vaasam.mp3"
+    "src": "Vetti-Veru-Vaasam.mp3",
+    "cover": "covers/ccf9e4c63f.jpg",
+    "coverHue": 15
   },
   {
     "title": "Vizhiyil-Vilunthu",
@@ -617,7 +713,9 @@
   {
     "title": "Yaarum Vilayadum",
     "artist": "S.P. Balasubrahmanyam",
-    "src": "Yaarum Vilayadum.mp3"
+    "src": "Yaarum Vilayadum.mp3",
+    "cover": "covers/8d1a67141b.jpg",
+    "coverHue": 45
   },
   {
     "title": "Yae Paadal Ondru",
@@ -627,7 +725,9 @@
   {
     "title": "Ye Rasaathi",
     "artist": "Malaysia Vasudevan, S. Janaki",
-    "src": "Ye Rasaathi.mp3"
+    "src": "Ye Rasaathi.mp3",
+    "cover": "covers/dcbe3ca517.jpg",
+    "coverHue": 16
   },
   {
     "title": "Yen Uyir Neethane",

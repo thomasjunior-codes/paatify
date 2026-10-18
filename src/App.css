@@ -100,6 +100,28 @@
   height: 42%;
 }
 
+.cover > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover.mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.cover.mosaic > svg {
+  display: none;
+}
+
+.cover.mosaic > img {
+  position: static;
+}
+
 .cover.round {
   border-radius: 50%;
 }
@@ -755,6 +777,7 @@
   bottom: 16px;
   height: 24px;
   gap: 3px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
 }
 
 .eq-lg i {
@@ -1178,7 +1201,7 @@
     height: 56px;
     padding: 0 4px 0 8px;
     border-radius: 6px;
-    background: hsl(var(--hue) 32% 24%);
+    background: hsl(var(--hue) calc(32% * var(--tint, 1)) 24%);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
     overflow: hidden;
   }
@@ -1248,7 +1271,12 @@
     display: flex;
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     border-radius: 0;
-    background: linear-gradient(180deg, hsl(var(--hue) 40% 32%) 0%, hsl(var(--hue) 30% 14%) 55%, var(--panel) 100%);
+    background: linear-gradient(
+      180deg,
+      hsl(var(--hue) calc(40% * var(--tint, 1)) 32%) 0%,
+      hsl(var(--hue) calc(30% * var(--tint, 1)) 14%) 55%,
+      var(--panel) 100%
+    );
     animation: sheet-up 0.25s ease-out;
   }
 

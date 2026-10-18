@@ -73,7 +73,8 @@ Open your browser and navigate to `http://localhost:5173` to view Paatify.
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start development server with auto-generation and file watching |
-| `npm run generate-songs` | Manually scan `public` folder and generate `songs.json` |
+| `npm run generate-songs` | Scan `public` folder, update `songs.json` and extract album art |
+| `npm run generate-covers` | Only re-extract album art into `public/covers` |
 | `npm run watch-songs` | Watch for file changes in `public` folder and regenerate `songs.json` |
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build locally |
@@ -98,7 +99,8 @@ npm run preview
 ```
 Paatify/
 ├── public/                 # Music folder (add MP3 files here)
-│   ├── songs.json         # Auto-generated playlist (DO NOT edit)
+│   ├── songs.json         # Generated playlist (hand-edited titles/artists are kept)
+│   ├── covers/            # Album art extracted from the audio files
 │   └── [your music files]
 ├── src/
 │   ├── App.tsx            # Main player component
@@ -107,6 +109,7 @@ Paatify/
 │   └── assets/            # Images and assets
 ├── scripts/
 │   ├── generateSongList.js    # Scans public folder and generates songs.json
+│   ├── extractCovers.js       # Extracts embedded album art into public/covers
 │   ├── watchSongs.js          # Watches for file changes
 │   └── cleanFileNames.js      # Optional: remove website traces from filenames
 ├── package.json
@@ -123,9 +126,11 @@ Paatify/
    - Song title (after the " - ")
    - If no " - " is found, the filename becomes the title
 
-3. **Playlist Generation**: A `songs.json` file is created with all songs sorted alphabetically by title
+3. **Playlist Generation**: A `songs.json` file is created with all songs sorted alphabetically by title. Songs already in `songs.json` keep their existing title and artist, so you can fix those by hand.
 
-4. **Music Playback**: The app loads songs from `songs.json` and streams them from the `public` folder
+4. **Album Art**: `scripts/extractCovers.js` reads the cover embedded in each MP3, resizes it to 400×400 and saves it in `public/covers`. Download sites often embed their own logo instead of the film's cover; those are skipped (see `SITE_LOGOS` in the script) and the app shows a coloured tile instead.
+
+5. **Music Playback**: The app loads songs from `songs.json` and streams them from the `public` folder
 
 ## Adding Your Own Music
 

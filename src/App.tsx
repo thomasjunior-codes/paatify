@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useEffectEvent, useMemo, useRef, useState } from 'react'
 import type { ChangeEvent, CSSProperties, ReactNode } from 'react'
 import './App.css'
 import {
@@ -22,6 +22,9 @@ interface Song {
   title: string
   artist: string
   src: string
+  // Album art extracted by scripts/extractCovers.js, and the hue of its main colour
+  cover?: string
+  coverHue?: number
 }
 
 interface Artist {
@@ -60,6 +63,23 @@ const initialsFor = (name: string) =>
 
 const hueStyle = (hue: number) => ({ '--hue': hue }) as CSSProperties
 
+const songHue = (song: Song) => song.coverHue ?? hueFor(song.title)
+
+// Tint the player with the cover's colour; greyscale art gets a neutral tint
+const songTintStyle = (song: Song) =>
+  ({ '--hue': songHue(song), '--tint': song.cover && song.coverHue === undefined ? 0 : 1 }) as CSSProperties
+
+// First few distinct covers in a list, for playlist-style mosaics
+const coversOf = (songs: Song[], indices: number[], limit = 4) => {
+  const covers: string[] = []
+  for (const index of indices) {
+    const cover = songs[index].cover
+    if (cover && !covers.includes(cover)) covers.push(cover)
+    if (covers.length === limit) break
+  }
+  return covers
+}
+
 // Indices of the songs that belong to an artist (null = the whole library)
 const indicesFor = (songs: Song[], artist: string | null) =>
   songs.reduce<number[]>((list, song, index) => {
@@ -76,20 +96,61 @@ const formatTime = (time: number) => {
 
 const isMobileLayout = () => window.matchMedia('(max-width: 768px)').matches
 
+// Lock-screen artwork for songs without album art
+const FALLBACK_ARTWORK = `${import.meta.env.BASE_URL}artwork.png`
+
+// Lets the lock screen show a progress bar that it can scrub
+const syncPositionState = (audio: HTMLAudioElement) => {
+  if (!('mediaSession' in navigator) || !Number.isFinite(audio.duration) || audio.duration <= 0) return
+  try {
+    navigator.mediaSession.setPositionState({
+      duration: audio.duration,
+      playbackRate: audio.playbackRate,
+      position: Math.min(audio.currentTime, audio.duration),
+    })
+  } catch {
+    // Older browsers don't support position state
+  }
+}
+
+// Album art when we have it, otherwise a generated gradient tile.
+// Four images make a 2x2 mosaic, like Spotify's playlist covers.
 function Cover({
   hue,
+  images = [],
   round = false,
   className = '',
   children,
+  overlay,
 }: {
   hue: number
+  images?: (string | undefined)[]
   round?: boolean
   className?: string
   children?: ReactNode
+  overlay?: ReactNode
 }) {
+  const [failed, setFailed] = useState<string[]>([])
+  const usable = images.filter((src): src is string => !!src && !failed.includes(src))
+  const shown = usable.length >= 4 ? usable.slice(0, 4) : usable.slice(0, 1)
+
   return (
-    <div className={`cover${round ? ' round' : ''} ${className}`} style={hueStyle(hue)}>
+    <div
+      className={`cover${round ? ' round' : ''}${shown.length === 4 ? ' mosaic' : ''} ${className}`}
+      style={hueStyle(hue)}
+    >
       {children ?? <NoteIcon />}
+      {shown.map((src) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onError={() => setFailed((prev) => [...prev, src])}
+        />
+      ))}
+      {overlay}
     </div>
   )
 }
@@ -140,6 +201,7 @@ function App() {
       .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
   }, [songs])
 
+  const libraryCovers = useMemo(() => coversOf(songs, songs.map((_, index) => index)), [songs])
   const viewIndices = useMemo(() => indicesFor(songs, viewArtist), [songs, viewArtist])
   const playingIndices = useMemo(() => indicesFor(songs, playingArtist), [songs, playingArtist])
 
@@ -171,6 +233,7 @@ function App() {
             ...song,
             title: cleanTitle(song.title),
             src: `${baseUrl}${song.src}`,
+            cover: song.cover && `${baseUrl}${song.cover}`,
           }))
           setSongs(songsWithBasePath)
           setCurrentSongIndex(0)
@@ -201,6 +264,24 @@ function App() {
   useEffect(() => {
     document.title = isPlaying && currentSong ? `${currentSong.title} • ${artistLabel(currentSong)}` : 'Paatify'
   }, [currentSong, isPlaying])
+
+  // What the lock screen and media notification show
+  useEffect(() => {
+    if (!('mediaSession' in navigator) || !currentSong) return
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: currentSong.title,
+      artist: artistLabel(currentSong),
+      album: 'Paatify',
+      artwork: currentSong.cover
+        ? [{ src: currentSong.cover, sizes: '400x400', type: 'image/jpeg' }]
+        : [{ src: FALLBACK_ARTWORK, sizes: '512x512', type: 'image/png' }],
+    })
+  }, [currentSong])
+
+  useEffect(() => {
+    if (!('mediaSession' in navigator)) return
+    navigator.mediaSession.playbackState = isPlaying ? 'playing' : 'paused'
+  }, [isPlaying])
 
   useEffect(() => {
     if (!nowPlayingOpen) return
@@ -295,6 +376,56 @@ function App() {
       nextSong(true)
     }
   }
+
+  // Lock screen, notification and headphone buttons
+  const handleMediaAction = useEffectEvent((details: MediaSessionActionDetails) => {
+    const audio = audioRef.current
+    if (!audio || songs.length === 0) return
+
+    switch (details.action) {
+      case 'play':
+        playAudio()
+        break
+      case 'pause':
+        audio.pause()
+        setIsPlaying(false)
+        break
+      case 'previoustrack':
+        prevSong()
+        break
+      case 'nexttrack':
+        nextSong(false)
+        break
+      case 'seekto':
+        if (details.seekTime !== undefined) {
+          audio.currentTime = details.seekTime
+          setCurrentTime(details.seekTime)
+        }
+        break
+    }
+  })
+
+  useEffect(() => {
+    if (!('mediaSession' in navigator)) return
+    // No seekbackward/seekforward: iOS would show those instead of previous/next
+    const actions: MediaSessionAction[] = ['play', 'pause', 'previoustrack', 'nexttrack', 'seekto']
+    for (const action of actions) {
+      try {
+        navigator.mediaSession.setActionHandler(action, (details) => handleMediaAction(details))
+      } catch {
+        // This browser doesn't support the action
+      }
+    }
+    return () => {
+      for (const action of actions) {
+        try {
+          navigator.mediaSession.setActionHandler(action, null)
+        } catch {
+          // This browser doesn't support the action
+        }
+      }
+    }
+  }, [])
 
   // Play a song from a list; `context` is the artist list it was picked from
   const playSong = (index: number, context: string | null) => {
@@ -444,7 +575,7 @@ function App() {
     </div>
   )
 
-  const songHue = currentSong ? hueFor(currentSong.title) : ALL_SONGS_HUE
+  const currentHue = currentSong ? songHue(currentSong) : ALL_SONGS_HUE
   const viewHue = isSearching ? SEARCH_HUE : viewArtist ? hueFor(viewArtist) : ALL_SONGS_HUE
   const viewTitle = viewArtist ?? 'All Songs'
 
@@ -486,7 +617,7 @@ function App() {
                   className={`library-item${viewArtist === null && !isSearching ? ' active' : ''}${playingArtist === null ? ' playing' : ''}`}
                   onClick={() => openView(null)}
                 >
-                  <Cover hue={ALL_SONGS_HUE} />
+                  <Cover hue={ALL_SONGS_HUE} images={libraryCovers} />
                   <span className="library-text">
                     <strong>All Songs</strong>
                     <span>Playlist · {songCount(songs.length)}</span>
@@ -555,7 +686,7 @@ function App() {
                       <span className="cover-initials">{initialsFor(viewArtist)}</span>
                     </Cover>
                   ) : (
-                    <Cover hue={ALL_SONGS_HUE} className="cover-hero" />
+                    <Cover hue={ALL_SONGS_HUE} images={libraryCovers} className="cover-hero" />
                   )}
                   <div className="hero-text">
                     <span className="hero-type">{viewArtist ? 'Artist' : 'Playlist'}</span>
@@ -615,7 +746,7 @@ function App() {
                               {isCurrent && isPlaying ? <Equalizer /> : <span className="num">{position + 1}</span>}
                               <span className="row-icon">{pausesOnClick ? <PauseIcon /> : <PlayIcon />}</span>
                             </span>
-                            <Cover hue={hueFor(song.title)} className="cover-row" />
+                            <Cover hue={songHue(song)} images={[song.cover]} className="cover-row" />
                             <span className="track-text">
                               <span className="track-title">{song.title}</span>
                               <span className="track-artist">{artistLabel(song)}</span>
@@ -645,7 +776,7 @@ function App() {
 
           <aside
             className={`now-playing${nowPlayingOpen ? ' open' : ''}`}
-            style={hueStyle(songHue)}
+            style={songTintStyle(currentSong)}
             aria-label="Now playing"
           >
             <div className="np-header">
@@ -664,10 +795,12 @@ function App() {
               <span className="np-spacer" />
             </div>
             <div className="np-body">
-              <Cover hue={songHue} className="cover-xl">
-                <NoteIcon />
-                {isPlaying && <Equalizer large />}
-              </Cover>
+              <Cover
+                hue={currentHue}
+                images={[currentSong.cover]}
+                className="cover-xl"
+                overlay={isPlaying && <Equalizer large />}
+              />
               <div className="np-meta">
                 <h2>{currentSong.title}</h2>
                 <p>{artistLabel(currentSong)}</p>
@@ -684,7 +817,7 @@ function App() {
                     className="library-item"
                     onClick={() => playSong(upNextIndex, playingArtist)}
                   >
-                    <Cover hue={hueFor(upNext.title)} />
+                    <Cover hue={songHue(upNext)} images={[upNext.cover]} />
                     <span className="library-text">
                       <strong>{upNext.title}</strong>
                       <span>{artistLabel(upNext)}</span>
@@ -698,14 +831,14 @@ function App() {
             </div>
           </aside>
 
-          <footer className="player-bar" style={hueStyle(songHue)}>
+          <footer className="player-bar" style={songTintStyle(currentSong)}>
             <button
               type="button"
               className="pb-track"
               onClick={showCurrentSong}
               aria-label={`Now playing: ${currentSong.title}. Show song`}
             >
-              <Cover hue={songHue} className="cover-pb" />
+              <Cover hue={currentHue} images={[currentSong.cover]} className="cover-pb" />
               <span className="pb-text">
                 <strong>{currentSong.title}</strong>
                 <span>{artistLabel(currentSong)}</span>
@@ -778,10 +911,16 @@ function App() {
         onDurationChange={(e) => {
           const { duration } = e.currentTarget
           setDuration(Number.isFinite(duration) ? duration : 0)
+          syncPositionState(e.currentTarget)
         }}
         onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
-        onPlay={() => setIsPlaying(true)}
+        onSeeked={(e) => syncPositionState(e.currentTarget)}
+        onPlay={(e) => {
+          setIsPlaying(true)
+          syncPositionState(e.currentTarget)
+        }}
         onPause={(e) => {
+          syncPositionState(e.currentTarget)
           // The end of a song also fires "pause"; let onEnded decide what plays next
           if (!e.currentTarget.ended) setIsPlaying(false)
         }}

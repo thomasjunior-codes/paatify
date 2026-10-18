@@ -7,7 +7,7 @@ const songsJson = path.join(publicDir, 'songs.json')
 
 function generateSongs() {
   try {
-    execSync('node scripts/generateSongList.js', { stdio: 'inherit' })
+    execSync('node scripts/generateSongList.js && node scripts/extractCovers.js', { stdio: 'inherit' })
     console.log('Songs list updated.')
   } catch (error) {
     console.error('Error generating songs:', error)

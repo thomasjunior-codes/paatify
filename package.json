@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "generate-songs": "node scripts/generateSongList.js",
+    "generate-songs": "node scripts/generateSongList.js && node scripts/extractCovers.js",
+    "generate-covers": "node scripts/extractCovers.js",
     "watch-songs": "node scripts/watchSongs.js",
     "predev": "npm run generate-songs",
     "dev": "concurrently \"npm run watch-songs\" \"vite\"",
@@ -27,6 +28,8 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "music-metadata": "11.16.1",
+    "sharp": "0.35.5",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.0",
     "vite": "^8.0.4"

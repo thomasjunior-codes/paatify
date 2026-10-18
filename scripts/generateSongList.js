@@ -9,15 +9,30 @@ const generateSongs = () => {
   try {
     console.log('Scanning public folder for audio files...')
     
+    // Keep entries already in songs.json, so hand-edited titles, artists and covers survive
+    const existing = new Map()
+    if (fs.existsSync(outFile)) {
+      try {
+        for (const song of JSON.parse(fs.readFileSync(outFile, 'utf-8'))) {
+          existing.set(song.src, song)
+        }
+      } catch (error) {
+        console.error(`✗ songs.json could not be read (${error.message}); leaving it untouched`)
+        return
+      }
+    }
+
     // Read all files in the public directory
     const files = fs.readdirSync(publicDir)
-    
+
     const songs = files
       .filter(file => {
         const ext = path.extname(file).toLowerCase()
         return allowedExt.includes(ext)
       })
       .map(file => {
+        if (existing.has(file)) return existing.get(file)
+
         const name = path.parse(file).name
         const parts = name.split(' - ').filter(p => p.trim())
         const title = parts[0]?.trim() || 'Unknown Title'
