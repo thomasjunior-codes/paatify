@@ -106,7 +106,8 @@ Paatify/
 │   ├── App.tsx            # Main player component
 │   ├── App.css            # Player styles
 │   ├── main.tsx           # React entry point
-│   └── assets/            # Images and assets
+│   ├── icons.tsx          # SVG icon components
+│   └── index.css          # Global styles and theme colours
 ├── scripts/
 │   ├── generateSongList.js    # Scans public folder and generates songs.json
 │   ├── extractCovers.js       # Extracts embedded album art into public/covers
